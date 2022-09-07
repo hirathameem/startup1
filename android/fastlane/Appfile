@@ -1,0 +1,2 @@
+json_key_file("/Users/hirasalim/AndroidStudioProjects/pc-api-7972865370940927060-381-42125e02e8f7.பஇjson") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("com.nathira.startup") # e.g. com.krausefx.app
