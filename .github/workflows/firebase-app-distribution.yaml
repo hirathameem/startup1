@@ -2,7 +2,8 @@ name: Publish to firebase app distributio
 on:
   push:
     branches:
-      -Third_job
+      - Third_job
+
 
 jobs:
   generate_release:
