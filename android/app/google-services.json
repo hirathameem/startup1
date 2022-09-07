@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "598133513450",
+    "project_id": "my-test-project-394c0",
+    "storage_bucket": "my-test-project-394c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598133513450:android:1fb98dc6ac2878e18e0b93",
+        "android_client_info": {
+          "package_name": "com.nathira.firstapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598133513450-o1oab071gee6268g9781kruargbnkfji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDamli7URIOJLrVw1ih7ralkQUFRbXL3U8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598133513450-o1oab071gee6268g9781kruargbnkfji.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "598133513450-0rqnnkmfn7a0vf3sf2k6dcitbclslr77.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.startup"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598133513450:android:f5f228d19586ee208e0b93",
+        "android_client_info": {
+          "package_name": "com.nathira.startup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598133513450-o1oab071gee6268g9781kruargbnkfji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDamli7URIOJLrVw1ih7ralkQUFRbXL3U8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598133513450-o1oab071gee6268g9781kruargbnkfji.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "598133513450-0rqnnkmfn7a0vf3sf2k6dcitbclslr77.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.startup"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
