@@ -1,18 +1,3 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
-
 default_platform(:android)
 
 platform :android do
@@ -21,14 +6,18 @@ platform :android do
     gradle(task: "test")
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
+  desc "Submit new beta build for testing"
+    lane :beta do
+      sh "flutter build appbundle -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']}"
+      firebase_app_distribution(
+        app: "1:598133513450:android:f5f228d19586ee208e0b93",
+        testers: "hirathameem@ymail.com",
+        release_notes: "Lots of amazing new features to test out!",
+        firebase_cli_token: ENV['FIREBASE_TOKEN'],
+        #android_artifact_type: "AAB"
+        android_artifact_path: '../android/app/release/app-release.aab',
+      )
+    end
 
   desc "Deploy a new version to the Google Play"
   lane :deploy do
