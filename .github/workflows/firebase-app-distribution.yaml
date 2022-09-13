@@ -69,13 +69,11 @@ jobs:
         run: |
           echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > app/upload-keystore.jks
           echo "storeFile=keystore.jks" >> key.properties
-          echo "keystore_passphrase=$KEYSTORE_PASSPHRASE" >> key.properties
           echo "keyAlias=$ANDROID_KEYSTORE_ALIAS" >> key.properties
           echo "keystorePassword=$ANDROID_KEYSTORE_PASSWORD" >> key.properties
           echo "privatekeyPassword=$ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD" >> key.properties
         env:
           PLAY_STORE_UPLOAD_KEY: ${{ secrets.PLAY_STORE_UPLOAD_KEY }}
-          KEYSTORE_PASSPHRASE: ${{ secrets.KEYSTORE_PASSPHRASE }}
           ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
           ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
