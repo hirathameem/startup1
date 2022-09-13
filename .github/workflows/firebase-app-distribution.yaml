@@ -68,7 +68,7 @@ jobs:
       - name: Configure Keystore
         run: |
           echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > app/upload-keystore.jks
-          echo "storeFile=keystore.jks" >> key.properties
+          echo "storeFile=upload-keystore.jks" >> key.properties
           echo "keyAlias=$ANDROID_KEYSTORE_ALIAS" >> key.properties
           echo "keystorePassword=$ANDROID_KEYSTORE_PASSWORD" >> key.properties
           echo "privatekeyPassword=$ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD" >> key.properties
