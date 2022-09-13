@@ -1,4 +1,4 @@
-name: Publish to firebase app distributio
+name: Publish to firebase app distribution
 on:
   push:
     branches:
