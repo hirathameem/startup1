@@ -1,0 +1,17 @@
+current directory: /Users/hirasalim/AndroidStudioProjects/startup/vendor/bundle/ruby/3.1.0/gems/json-2.6.2/ext/json/ext/generator
+/usr/local/opt/ruby/bin/ruby -I /usr/local/lib/ruby/site_ruby/3.1.0 extconf.rb
+creating Makefile
+
+current directory: /Users/hirasalim/AndroidStudioProjects/startup/vendor/bundle/ruby/3.1.0/gems/json-2.6.2/ext/json/ext/generator
+make DESTDIR\= sitearchdir\=./.gem.20221001-47946-mw5kgm sitelibdir\=./.gem.20221001-47946-mw5kgm clean
+xcrun: error: active developer path ("/Applications/Xcode.app/Contents/Developer") does not exist
+Use `sudo xcode-select --switch path/to/Xcode.app` to specify the Xcode that you wish to use for command line developer tools, or use `xcode-select --install` to install the standalone command line developer tools.
+See `man xcode-select` for more details.
+
+current directory: /Users/hirasalim/AndroidStudioProjects/startup/vendor/bundle/ruby/3.1.0/gems/json-2.6.2/ext/json/ext/generator
+make DESTDIR\= sitearchdir\=./.gem.20221001-47946-mw5kgm sitelibdir\=./.gem.20221001-47946-mw5kgm
+xcrun: error: active developer path ("/Applications/Xcode.app/Contents/Developer") does not exist
+Use `sudo xcode-select --switch path/to/Xcode.app` to specify the Xcode that you wish to use for command line developer tools, or use `xcode-select --install` to install the standalone command line developer tools.
+See `man xcode-select` for more details.
+
+make failed, exit code 1
