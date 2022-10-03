@@ -15,7 +15,7 @@ platform :android do
         release_notes: "Lots of amazing new features to test out!",
         firebase_cli_token: ENV['FIREBASE_TOKEN'],
         android_artifact_type: "AAB"
-        android_artifact_path: '../android/app/release/app-release.aab',
+        android_artifact_path: '../build/app/outputs/bundle/release/app-release.aab',
       )
     end
 
