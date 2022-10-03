@@ -6,14 +6,9 @@ platform :android do
     gradle(task: "test")
   end
 
-#   desc "Submit a new beta build to Crashlytics Beta"
-#   lane :beta do
-#     gradle(task: "clean assembleRelease")
-#     crashlytics
-  end
 
   desc "Submit new beta build for testing"
-    lane :distribute do
+    lane :beta do
       sh "flutter build appbundle"
       firebase_app_distribution(
         app: "1:598133513450:android:f5f228d19586ee208e0b93",
@@ -26,9 +21,9 @@ platform :android do
     end
 
 
-#   desc "Deploy a new version to the Google Play"
-#   lane :deploy do
-#     gradle(task: "clean assembleRelease")
-#     upload_to_play_store
-#   end
-#end
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+    gradle(task: "clean assembleRelease")
+    upload_to_play_store
+  end
+end
