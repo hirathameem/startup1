@@ -6,6 +6,12 @@ platform :android do
     gradle(task: "test")
   end
 
+  desc "Submit a new beta build to Crashlytics Beta"
+    lane :beta do
+        gradle(task: "clean assembleRelease")
+        crashlytics
+   end
+
   desc "Submit new beta build for testing"
     lane :distribute do
       sh "flutter build appbundle"
