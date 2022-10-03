@@ -7,7 +7,7 @@ platform :android do
   end
 
   desc "Submit new beta build for testing"
-    lane :beta do
+    lane :distribute do
       sh "flutter build appbundle"
       firebase_app_distribution(
         app: "1:598133513450:android:f5f228d19586ee208e0b93",
