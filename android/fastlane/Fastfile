@@ -6,10 +6,10 @@ platform :android do
     gradle(task: "test")
   end
 
-  desc "Submit a new beta build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease", project_dir: 'android/')
-    crashlytics
+#   desc "Submit a new beta build to Crashlytics Beta"
+#   lane :beta do
+#     gradle(task: "clean assembleRelease")
+#     crashlytics
   end
 
   desc "Submit new beta build for testing"
