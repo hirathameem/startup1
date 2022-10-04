@@ -31,10 +31,18 @@ Runs all the tests
 
 Submit new beta build for testing
 
-### android deploy
+### android increment_version
 
 ```sh
-[bundle exec] fastlane android deploy
+[bundle exec] fastlane android increment_version
+```
+
+Automatically increment build number
+
+### android playstore
+
+```sh
+[bundle exec] fastlane android playstore
 ```
 
 Deploy a new version to the Google Play
