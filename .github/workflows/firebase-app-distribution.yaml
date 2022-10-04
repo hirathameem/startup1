@@ -4,7 +4,6 @@ on:
     branches:
       - Fourth_Job
 
-
 jobs:
   generate_release:
     outputs:
