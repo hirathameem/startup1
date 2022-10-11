@@ -31,21 +31,13 @@ Runs all the tests
 
 Submit new beta build for testing
 
-### android increment_version
-
-```sh
-[bundle exec] fastlane android increment_version
-```
-
-Automatically increment build number
-
 ### android playstore
 
 ```sh
 [bundle exec] fastlane android playstore
 ```
 
-Deploy a new version to the Google Play
+Deploy a beta version to the Google Play
 
 ----
 
@@ -53,4 +45,4 @@ This README.md is auto-generated and will be re-generated every time [_fastlane_
 
 More information about _fastlane_ can be found on [fastlane.tools](https://fastlane.tools).
 
-The documentation of _fastlane_ can be found on [docs.fastlane.tools](https://docs.fastlane.tools)..
+The documentation of _fastlane_ can be found on [docs.fastlane.tools](https://docs.fastlane.tools).

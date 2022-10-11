@@ -21,12 +21,13 @@ platform :android do
 
 
 
-  desc "Deploy a new version to the Google Play"
+    desc "Deploy a beta version to the Google Play"
     lane :playstore do
-      gradle(
-        task: 'assemble',
-        build_type: 'Release'
-      )
-      upload_to_play_store # Uploads the APK built in the gradle step above and releases it to all production users
-    end
- end
+      gradle(task: 'clean assembleRelease')
+      upload_to_play_store(
+
+        version_name: "1.0.1",
+        version_code: 3,
+        )
+      end
+   end

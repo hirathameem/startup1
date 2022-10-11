@@ -25,100 +25,37 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
 
-#  app_distribution_android:
-#    runs-on: ubuntu-latest
-#    needs: generate_release
-#    defaults:
-#      run:
-#        working-directory: ./android
-#    steps:
-#      - uses: actions/checkout@v2
-#        with:
-#          fetch-depth: 0
-#      - name: Set up JDK
-#        uses: actions/setup-java@v3
-#        with:
-#          distribution: 'temurin'
-#          java-version: 11
-#
-#      - name: Setup Android SDK
-#        uses: android-actions/setup-android@v2
-#      - name: Install Flutter
-#        uses: subosito/flutter-action@v2.3.0
-#        with:
-#          flutter-version: "3.3.1"
-##      - name: Fix up git URLs
-##         run: echo -e '[url "https://github.com/"]\n  insteadOf = "git://github.com"' >> ~/.gitconfig
-#      - uses: ruby/setup-ruby@v1
-#        with:
-#          ruby-version: 2.6
-#          bundler-cache: true
-#      - uses: actions/setup-dotnet@v2
-#        with:
-#          dotnet-version: "3.1.420"
-#      - name: Install GitVersion
-#        uses: gittools/actions/gitversion/setup@v0.9.13
-#        with:
-#          versionSpec: "5.10.0"
-#      - name: Determine Version
-#        id: gitversion
-#        uses: gittools/actions/gitversion/execute@v0.9.13
-#      - run: bundle install
-#      - name: Configure Keystore
-#        run: |
-#          echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > app/upload-keystore.jks
-#          echo "storeFile=upload-keystore.jks" >> key.properties
-#          echo "keyAlias=$ANDROID_KEYSTORE_ALIAS" >> key.properties
-#          echo "storePassword=$ANDROID_KEYSTORE_PASSWORD" >> key.properties
-#          echo "keyPassword=$ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD" >> key.properties
-#        env:
-#          PLAY_STORE_UPLOAD_KEY: ${{ secrets.PLAY_STORE_UPLOAD_KEY }}
-#          ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
-#          ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}
-#          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-#      - run: bundle exec fastlane beta
-#        env:
-#          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-#          RELEASE_NOTES: ${{ needs.generate_release.outputs.changelog }}
-
-  app_distribution_ios:
-    runs-on: [ self-hosted ]
+  app_distribution_android:
+    runs-on: ubuntu-latest
     needs: generate_release
     defaults:
       run:
-        working-directory: ./app/ios
+        working-directory: ./android
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v3
         with:
-          key: ${{ secrets.SSH_KEY }}
-          name: id_ed25519
-          known_hosts: |
-            # github.com:22 SSH-2.0-babeld-aa6f9991
-            github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
-            # github.com:22 SSH-2.0-babeld-aa6f9991
-            github.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
-            # github.com:22 SSH-2.0-babeld-aa6f9991
-            github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
-            # github.com:22 SSH-2.0-babeld-aa6f9991
-            # github.com:22 SSH-2.0-babeld-aa6f9991
-          if_key_exists: replace
-      - name: Fix up git URLs
-        run: echo -e '[url "https://github.com/"]\n  insteadOf = "git://github.com/"' >> ~/.gitconfig
+          distribution: 'temurin'
+          java-version: 11
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
       - name: Install Flutter
         uses: subosito/flutter-action@v2.3.0
         with:
-          flutter-version: "2.10.4"
+          flutter-version: "3.3.1"
+#      - name: Fix up git URLs
+#         run: echo -e '[url "https://github.com/"]\n  insteadOf = "git://github.com"' >> ~/.gitconfig
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
           bundler-cache: true
       - uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: "3.1.420" # Fix version to 3.1.420
+          dotnet-version: "3.1.420"
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.13
         with:
@@ -127,13 +64,20 @@ jobs:
         id: gitversion
         uses: gittools/actions/gitversion/execute@v0.9.13
       - run: bundle install
-      - run: flutter pub get
-      - run: pod install
+      - name: Configure Keystore
+        run: |
+          echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > app/upload-keystore.jks
+          echo "storeFile=upload-keystore.jks" >> key.properties
+          echo "keyAlias=$ANDROID_KEYSTORE_ALIAS" >> key.properties
+          echo "storePassword=$ANDROID_KEYSTORE_PASSWORD" >> key.properties
+          echo "keyPassword=$ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD" >> key.properties
+        env:
+          PLAY_STORE_UPLOAD_KEY: ${{ secrets.PLAY_STORE_UPLOAD_KEY }}
+          ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+          ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
       - run: bundle exec fastlane beta
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           RELEASE_NOTES: ${{ needs.generate_release.outputs.changelog }}
-          TEAM_ID: 357LX6H26P
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          MATCH_KEYCHAIN_NAME: "match"
-          APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}
+
