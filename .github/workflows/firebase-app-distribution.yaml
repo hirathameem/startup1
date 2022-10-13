@@ -19,7 +19,7 @@ jobs:
         with:
           configuration: ".github/configs/configuration.json"
           repo: "startup"
-          fromTag: "v1.0.1"
+          fromTag: "v1.0.2"
           toTag: "master"
           includeOpen: false
         env:
