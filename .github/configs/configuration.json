@@ -52,6 +52,6 @@
     }
   },
   "base_branches": [
-    "Fifth_Job"
+    "main"
   ]
 }
