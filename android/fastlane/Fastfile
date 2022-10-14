@@ -15,7 +15,7 @@ platform :android do
           release_notes: ENV['RELEASE_NOTES'],
           firebase_cli_token: ENV['FIREBASE_TOKEN'],
           android_artifact_type: "APK",
-          android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk'
+          android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk
         )
      end
 
