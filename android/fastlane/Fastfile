@@ -8,7 +8,7 @@ platform :android do
 
   desc "Submit new beta build for testing"
   lane :beta do
-     sh "flutter build apk"
+     sh "flutter build apk -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']}"
         firebase_app_distribution(
           app: "1:598133513450:android:f5f228d19586ee208e0b93",
           testers: "hirathameem@ymail.com",
