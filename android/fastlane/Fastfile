@@ -15,19 +15,9 @@ platform :android do
           release_notes: ENV['RELEASE_NOTES'],
           firebase_cli_token: ENV['FIREBASE_TOKEN'],
           android_artifact_type: "APK",
-          android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk
+          android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk'
         )
      end
-
-
-
-    desc "Deploy a beta version to the Google Play"
-    lane :playstore do
-      gradle(task: 'clean assembleRelease')
-      upload_to_play_store(
-
-        version_name: "1.0.1",
-        version_code: 3,
-        )
-      end
    end
+
+
