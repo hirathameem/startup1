@@ -8,11 +8,11 @@ platform :android do
 
   desc "Submit new beta build for testing"
   lane :beta do
-     sh "flutter build apk" -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']}"
+     sh "flutter build apk" -v --build-number {ENV['GITVERSION_BUILDMETADATA']} --build-name {ENV['GITVERSION_MAJORMINORPATCH']}"
         firebase_app_distribution(
           app: "1:598133513450:android:f5f228d19586ee208e0b93",
           testers: "hirathameem@ymail.com",
-          release_notes: "Lots of amazing new features to test out!",
+          release_notes: ENV['RELEASE_NOTES'],
           firebase_cli_token: ENV['FIREBASE_TOKEN'],
           android_artifact_type: "APK",
           android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk'
