@@ -3,8 +3,9 @@ name: Release Drafter
 on:
   push:
 
+
     branches:
-      - Sixth_Job
+      - main
 
 
 jobs:
