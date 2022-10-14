@@ -2,7 +2,7 @@ name: Publish to firebase app distribution
 on:
   push:
     branches:
-      - Fifth_Job
+      - Sixth_Job
 
 jobs:
   generate_release:
@@ -20,7 +20,7 @@ jobs:
           configuration: ".github/configs/configuration.json"
           repo: "startup"
           fromTag: "v1.0.1"
-          toTag: "master"
+          toTag: "main"
           includeOpen: false
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
