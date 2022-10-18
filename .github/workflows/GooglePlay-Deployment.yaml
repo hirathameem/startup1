@@ -1,8 +1,7 @@
-name: Publish to firebase app distribution
+name: Deploy to Google
 on:
-  push:
-    branches:
-      - Fix_Release_Notes
+  release:
+   types: [published, created, edited]
 
 jobs:
   generate_release:
@@ -19,11 +18,12 @@ jobs:
         with:
           configuration: ".github/configs/configuration.json"
           repo: "startup"
-          fromTag: "v1.1.0"
+          fromTag: "v1.0.2"
           toTag: "main"
           includeOpen: false
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
+
 
   app_distribution_android:
     runs-on: ubuntu-latest
@@ -47,8 +47,8 @@ jobs:
         uses: subosito/flutter-action@v2.3.0
         with:
           flutter-version: "3.3.1"
-#      - name: Fix up git URLs
-#         run: echo -e '[url "https://github.com/"]\n  insteadOf = "git://github.com"' >> ~/.gitconfig
+      #      - name: Fix up git URLs
+      #         run: echo -e '[url "https://github.com/"]\n  insteadOf = "git://github.com"' >> ~/.gitconfig
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
@@ -76,8 +76,7 @@ jobs:
           ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
           ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-      - run: bundle exec fastlane beta
+      - run: bundle exec fastlane deploy
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           RELEASE_NOTES: ${{ needs.generate_release.outputs.changelog }}
-

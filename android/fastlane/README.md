@@ -31,13 +31,13 @@ Runs all the tests
 
 Submit new beta build for testing
 
-### android playstore
+### android deploy
 
 ```sh
-[bundle exec] fastlane android playstore
+[bundle exec] fastlane android deploy
 ```
 
-Deploy a beta version to the Google Play
+Deploy alpha version to Google Play
 
 ----
 
