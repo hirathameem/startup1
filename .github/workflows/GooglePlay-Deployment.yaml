@@ -1,8 +1,12 @@
 name: Deploy to Google
 on:
   push:
+    branches:
+      - Eighth_Job
     tags:
       - v*
+  release:
+    types: [created]
 
 #    branches:
 #      - Eighth_Job
@@ -28,7 +32,7 @@ jobs:
           configuration: ".github/configs/configuration.json"
           repo: "startup"
           fromTag: "v1.1.0"
-          toTag: "Eight_Job"
+          toTag: "Eighth_Job"
           includeOpen: false
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
