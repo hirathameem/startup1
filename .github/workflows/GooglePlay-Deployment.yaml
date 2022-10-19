@@ -1,6 +1,6 @@
 name: Deploy to Google
 on:
-#  push:
+  push:
 #    branches:
 #      -
 #    tags:
@@ -8,8 +8,8 @@ on:
 #  release:
 #    types: [created]
 
-#    branches:
-#      - Eighth_Job
+    branches:
+      - Job_Ten
 
 
 #  release:
