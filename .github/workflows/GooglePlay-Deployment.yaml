@@ -1,7 +1,8 @@
 name: Deploy to Google
 on:
   release:
-   types: [published, created, edited]
+    types: [published, created, edited]
+
 
 jobs:
   generate_release:
