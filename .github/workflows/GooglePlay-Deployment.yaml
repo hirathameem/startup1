@@ -1,7 +1,12 @@
 name: Deploy to Google
 on:
+#  push:
+#    branches:
+#      - Seventh_Job
+
+
   release:
-    types: [published, created, edited]
+   types: [created]
 
 
 jobs:
@@ -19,7 +24,7 @@ jobs:
         with:
           configuration: ".github/configs/configuration.json"
           repo: "startup"
-          fromTag: "v1.0.2"
+          fromTag: "v1.1.1"
           toTag: "main"
           includeOpen: false
         env:
