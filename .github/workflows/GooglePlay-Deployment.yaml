@@ -1,8 +1,11 @@
 name: Deploy to Google
 on:
   push:
-    branches:
-      - Eighth_Job
+    tags:
+      - '*'
+
+#    branches:
+#      - Eighth_Job
 
 
 #  release:
