@@ -5,11 +5,11 @@ on:
 #      -
 #    tags:
 #      - v*
-#  release:
-#    types: [created]
+  release:
+    types: [created]
 
-    branches:
-      - Job_Ten
+#    branches:
+#      - Job_Ten
 
 
 #  release:
