@@ -1,12 +1,12 @@
 name: Deploy to Google
 on:
-#  push:
-#    branches:
-#      - Eighth_Job
+  push:
+    branches:
+      - Eighth_Job
 
 
-  release:
-   types: [created]
+#  release:
+#   types: [created]
 
 
 jobs:
