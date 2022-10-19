@@ -27,8 +27,8 @@ jobs:
         with:
           configuration: ".github/configs/configuration.json"
           repo: "startup"
-          fromTag: "v1.1.1"
-          toTag: "main"
+          fromTag: "v1.1.0"
+          toTag: "Eight_Job"
           includeOpen: false
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
