@@ -3,10 +3,14 @@ on:
 #  push:
 #    branches:
 #      -
-  tags:
-    - v*
+    tags:
+      - v*
   release:
-    types: [created]
+    types: [published, edited]
+
+#    branches:
+#      - Job_Ten
+
 
 
 
