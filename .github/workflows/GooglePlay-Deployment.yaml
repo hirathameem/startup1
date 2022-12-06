@@ -1,19 +1,17 @@
 name: Deploy to Google
 on:
-  push:
+#  push:
 #    branches:
 #      -
-#    tags:
-#      - v*
+    tags:
+      - v*
   release:
-    types: [created]
+    types: [published, edited]
 
 #    branches:
 #      - Job_Ten
 
 
-#  release:
-#   types: [created]
 
 
 jobs:
