@@ -6,14 +6,12 @@ on:
 #    tags:
 #      - v*
   release:
-    types: [created]
+    types: [published, edited]
 
 #    branches:
 #      - Job_Ten
 
 
-#  release:
-#   types: [created]
 
 
 jobs:
