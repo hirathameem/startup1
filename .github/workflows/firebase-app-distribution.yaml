@@ -1,8 +1,8 @@
 name: Publish to firebase app distribution
-#on:
-#  push:
-#    branches:
-#      - December
+on:
+  push:
+    branches:
+      - December
 
 jobs:
   generate_release:
