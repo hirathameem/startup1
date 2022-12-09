@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nathira.startup">
+    package="com.nathira.startup1">
    <application
         android:label="startup"
         android:name="${applicationName}"

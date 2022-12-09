@@ -1,4 +1,4 @@
-package com.nathira.startup
+package com.nathira.startup1
 
 import io.flutter.embedding.android.FlutterActivity
 
