@@ -5,7 +5,7 @@ on:
 
 
     branches:
-      - Fix_Release_Notes
+      - Test1
 
 
 jobs:
