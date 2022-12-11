@@ -2,7 +2,7 @@ name: Publish to firebase app distribution
 on:
   push:
     branches:
-      - December
+      - Test1
 
 jobs:
   generate_release:
@@ -18,7 +18,7 @@ jobs:
         uses: mikepenz/release-changelog-builder-action@v3
         with:
           configuration: ".github/configs/configuration.json"
-          repo: "startup"
+          repo: "startup1"
           fromTag: "v1.1.0"
           toTag: "main"
           includeOpen: false
@@ -78,6 +78,6 @@ jobs:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
       - run: bundle exec fastlane beta
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_STARTUP1 }}
           RELEASE_NOTES: ${{ needs.generate_release.outputs.changelog }}
 

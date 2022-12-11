@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:598133513450:android:1fb98dc6ac2878e18e0b93",
+        "mobilesdk_app_id": "1:598133513450:android:f5f228d19586ee208e0b93",
         "android_client_info": {
-          "package_name": "com.nathira.firstapp"
+          "package_name": "com.nathira.startup"
         }
       },
       "oauth_client": [
@@ -43,9 +43,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:598133513450:android:f5f228d19586ee208e0b93",
+        "mobilesdk_app_id": "1:598133513450:android:9712712105eab7478e0b93",
         "android_client_info": {
-          "package_name": "com.nathira.startup"
+          "package_name": "com.nathira.startup1"
         }
       },
       "oauth_client": [
