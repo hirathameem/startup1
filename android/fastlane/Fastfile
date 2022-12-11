@@ -10,7 +10,7 @@ platform :android do
   lane :beta do
      sh "flutter build apk -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']}"
         firebase_app_distribution(
-          app: "1:598133513450:android:f5f228d19586ee208e0b93",
+          app: "1:598133513450:android:9712712105eab7478e0b93",
           testers: "hirathameem@ymail.com",
           release_notes: ENV['RELEASE_NOTES'],
           firebase_cli_token: ENV['FIREBASE_TOKEN'],
