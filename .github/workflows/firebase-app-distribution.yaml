@@ -78,6 +78,6 @@ jobs:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
       - run: bundle exec fastlane beta
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_STARTUP1 }}
           RELEASE_NOTES: ${{ needs.generate_release.outputs.changelog }}
 
