@@ -13,7 +13,7 @@ platform :android do
           app: "1:598133513450:android:9712712105eab7478e0b93",
           testers: "hirathameem@ymail.com",
           release_notes: ENV['RELEASE_NOTES'],
-          firebase_cli_token: ENV['FIREBASE_TOKEN'],
+          firebase_cli_token: ENV['FIREBASE_TOKEN_STARTUP1'],
           android_artifact_type: "APK",
           android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk'
         )
