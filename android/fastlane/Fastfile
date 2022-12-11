@@ -12,23 +12,23 @@ platform :android do
         firebase_app_distribution(
           app: "1:598133513450:android:9712712105eab7478e0b93",
           testers: "hirathameem@ymail.com",
-          release_notes: ENV['RELEASE_NOTES'],
+          release_notes: "Lots of amazing new features to test out!" ,
           firebase_cli_token: ENV['FIREBASE_TOKEN_STARTUP1'],
           android_artifact_type: "APK",
           android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk'
         )
      end
 
-   desc "Deploy alpha version to Google Play"
-     lane :deploy do
-       sh "flutter build appbundle -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']}"
+  desc "Deploy alpha version to Google Play"
+  lane :deploy do
+     sh "flutter build appbundle -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']}"
        upload_to_play_store(
-           package_name: 'com.nathira.startup',
-           track: 'production',
-           aab: '../build/app/outputs/bundle/release/app-release.aab',
-           json_key: "api-play-store-key.json"
-           )
-         end
+          package_name: 'com.nathira.startup1',
+          track: 'internal testing',
+          aab: '../build/app/outputs/bundle/release/app-release.aab',
+          json_key: "api-play-store-key.json"
+         )
+      end
   end
 
 
