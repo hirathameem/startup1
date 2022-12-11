@@ -1,7 +1,10 @@
 name: Deploy to Google
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - Test3
+#  release:
+#    types: [published]
 
 jobs:
   generate_release:
@@ -78,5 +81,5 @@ jobs:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
       - run: bundle exec fastlane deploy
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_STARTUP1 }}
           RELEASE_NOTES: ${{ needs.generate_release.outputs.changelog }}
