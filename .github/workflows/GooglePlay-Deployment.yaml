@@ -69,7 +69,7 @@ jobs:
       - run: bundle install
       - name: Configure Keystore
         run: |
-          echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > ./upload-keystore.jks
+          echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > upload-keystore.jks
           echo "storeFile=upload-keystore.jks" >> key.properties
           echo "keyAlias=$ANDROID_KEYSTORE_ALIAS" >> key.properties
           echo "storePassword=$ANDROID_KEYSTORE_PASSWORD" >> key.properties
