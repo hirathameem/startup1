@@ -1,1 +1,1 @@
-test app for publishing
+This is a sample CI/CD demo
