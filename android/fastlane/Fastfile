@@ -26,10 +26,11 @@ platform :android do
           package_name: 'com.nathira.startup1',
           json_key: "api-play-store-key.json",
           aab: '../build/app/outputs/bundle/release/app-release.aab',
-          track: 'internal',
+          track: 'production',
           release_status: 'draft'
        )
-      end
+    end
+
 end
 
 
