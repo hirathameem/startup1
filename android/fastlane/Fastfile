@@ -28,7 +28,7 @@ platform :android do
           aab: '../build/app/outputs/bundle/release/app-release.aab',
           json_key: "api-play-store-key.json"
           release_status: 'draft'
-         )
+        )
       end
 
 #   desc "Deploy alpha version to Google Play"
