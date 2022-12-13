@@ -28,6 +28,9 @@ platform :android do
           aab: '../build/app/outputs/bundle/release/app-release.aab',
           json_key: "api-play-store-key.json"
          )
+         add_git_tag(
+         prefix: "v",
+         )
 
       end
   end
