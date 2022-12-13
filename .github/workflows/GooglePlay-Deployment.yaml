@@ -32,7 +32,7 @@ jobs:
 #          draft: false
 #          prerelease: false
         env:
-        GITHUB_TOKEN: ${{ secrets.G_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          GITHUB_TOKEN: ${{ secrets.G_TOKEN }} # This token is provided by Actions, you do not need to create your own token
 
 
   app_distribution_android:
