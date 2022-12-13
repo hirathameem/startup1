@@ -1,26 +1,26 @@
-#Name of workflow
-name: Release
-
-#Run on every commit tag which begins with "v" (e.g., "v0.1.4")
-#on:
-#  branches:
-#    - main
-
-#Automatically create a Github Release, with release details
-jobs:
-  build:
-    name: Create Release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.G_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
+##Name of workflow
+#name: Release
+#
+##Run on every commit tag which begins with "v" (e.g., "v0.1.4")
+##on:
+##  branches:
+##    - main
+#
+##Automatically create a Github Release, with release details
+#jobs:
+#  build:
+#    name: Create Release
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@master
+#      - name: Create Release
+#        id: create_release
+#        uses: actions/create-release@latest
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.G_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+#        with:
+#          tag_name: ${{ github.ref }}
+#          release_name: Release ${{ github.ref }}
+#          draft: false
+#          prerelease: false
