@@ -1,7 +1,7 @@
 name: Deploy to Google
 on:
   release:
-    types: [published,created,edited]
+    types: [published]
 
 jobs:
   generate_release:
@@ -21,6 +21,15 @@ jobs:
           fromTag: "v1.1.0"
           toTag: "main"
           includeOpen: false
+      - name: Create Release # delete from here if fail
+          id: create_release
+          uses: actions/create-release@latest
+          with:
+            tag_name: ${{ github.ref }}
+            release_name: Release ${{ github.ref }}
+            draft: false
+            prerelease: false
+
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
 
