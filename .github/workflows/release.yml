@@ -5,7 +5,7 @@ name: Release
 on:
   push:
     tags:
-      - "v*"
+#      - "v*"
 
 #Automatically create a Github Release, with release details
 jobs:
