@@ -21,6 +21,7 @@ jobs:
           fromTag: "v1.1.0"
           toTag: "main"
           includeOpen: false
+
       - name: Create Release # delete from here if fail
           id: create_release
           uses: actions/create-release@latest
