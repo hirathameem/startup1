@@ -1,8 +1,5 @@
 name: Deploy to Google
 on:
-#  push:
-#    branches:
-#      - Test3
   release:
     types: [published]
 
