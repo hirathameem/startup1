@@ -21,7 +21,9 @@ jobs:
           fromTag: "v1.1.0"
           toTag: "main"
           includeOpen: false
-     - name: Checkout code
+
+  create_release:
+    - name: Checkout code
        uses: actions/checkout@master
      - name: Create Release
        id: create_release
