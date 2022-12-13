@@ -24,7 +24,7 @@ jobs:
 
   create_release:
     runs-on: ubuntu-latest
-    steps:
+      steps:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Create Release
