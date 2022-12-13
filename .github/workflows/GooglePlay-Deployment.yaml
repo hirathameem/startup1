@@ -22,18 +22,21 @@ jobs:
           toTag: "main"
           includeOpen: false
 
-      - name: Create Release # delete from here if fail
-          id: create_release
-          uses: actions/create-release@latest
-          with:
-            tag_name: ${{ github.ref }}
-            release_name: Release ${{ github.ref }}
-            draft: false
-            prerelease: false
-
-        env:
-          GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
-
+  create_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.G_TOKEN }} # This token is provided by Actions, you do not need to create your own token
 
   app_distribution_android:
     runs-on: ubuntu-latest
