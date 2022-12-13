@@ -2,9 +2,9 @@
 name: Release
 
 #Run on every commit tag which begins with "v" (e.g., "v0.1.4")
-on:
-  branches:
-    - main
+#on:
+#  branches:
+#    - main
 
 #Automatically create a Github Release, with release details
 jobs:
