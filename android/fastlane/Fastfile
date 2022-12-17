@@ -17,7 +17,7 @@ platform :android do
         skip_upload_images: true,
         skip_upload_screenshots: true,
         release_status: "draft",
-        json_key: "api-play-store-key.json"
+        json_key: "service_account_key.json"
         #version_code: flutter_version()["version_code"],
       )
     end
