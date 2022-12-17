@@ -72,8 +72,8 @@ jobs:
 
 
 
-      - name: Build the app bundle
-        run: flutter build appbundle --release
+      - name: Build the APK
+        run: flutter build apk --release
       - name: Upload artifact to Github
         uses: actions/upload-artifact@v1
         with:
