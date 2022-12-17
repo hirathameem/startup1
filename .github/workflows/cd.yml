@@ -87,10 +87,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Setup Java
-        uses: actions/setup-java@v1
         with:
-          java-version: 12.x
+          fetch-depth: 0
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 11
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+        
       - name: Decrypt Android keys
         run: sh ./.github/scripts/decrypt_android_secrets.sh
         env:
