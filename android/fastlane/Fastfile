@@ -1,8 +1,8 @@
 default_platform(:android)
 
 platform :android do
-  desc "Deploy to closed beta track"
-  lane :closed_beta do
+  desc "Deploy to production"
+  lane :deploy do
     begin
       gradle(task: "clean")
       gradle(
@@ -10,12 +10,14 @@ platform :android do
         build_type: 'Release'
       )
       upload_to_play_store(
-        track: 'Closed beta',
+        package_name: 'com.nathira.startup1'
+        track: 'production',
         aab: '../build/app/outputs/bundle/release/app-release.aab',
         skip_upload_metadata: true,
         skip_upload_images: true,
         skip_upload_screenshots: true,
         release_status: "draft",
+        json_key: "api-play-store-key.json"
         #version_code: flutter_version()["version_code"],
       )
     end
