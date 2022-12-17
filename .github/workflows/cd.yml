@@ -7,6 +7,26 @@ on:
       - "v1.5.8"
 
 jobs:
+  generate_release:
+    outputs:
+      changelog: ${{ steps.build_release.outputs.changelog }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Build Changelog
+        id: build_release
+        uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          configuration: ".github/configs/configuration.json"
+          repo: "startup1"
+          fromTag: "v1.1.0"
+          toTag: "main"
+          includeOpen: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
+
   # CI
   build_android:
     runs-on: ubuntu-latest
