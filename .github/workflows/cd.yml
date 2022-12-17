@@ -69,9 +69,6 @@ jobs:
       - name: Determine Version
         id: gitversion
         uses: gittools/actions/gitversion/execute@v0.9.13
-
-
-
       - name: Build the bundle
         run: flutter build appbundle --release
       - name: Upload artifact to Github
@@ -99,11 +96,24 @@ jobs:
         env:
           ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
       - name: Setup Flutter
-        uses: subosito/flutter-action@v1
+        uses: subosito/flutter-action@v2.3.0
         with:
-          flutter-version: 1.17.5
-      - name: Install Flutter dependencies
-#        run: flutter pub get
+          flutter-version: "3.3.1"
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+          bundler-cache: true
+      - uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: "3.1.420"
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.13
+        with:
+          versionSpec: "5.10.0"
+      - name: Determine Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.13
+      - name: Build the bundle
         run: flutter build appbundle --release
       - name: Run Fastlane
         uses: maierj/fastlane-action@v1.4.0
