@@ -127,5 +127,11 @@ jobs:
         with:
           lane: deploy
           subdirectory: android
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_STARTUP1 }}
+          RELEASE_NOTES: ${{ needs.generate_release.outputs.changelog }}
+
+          
+
         
       

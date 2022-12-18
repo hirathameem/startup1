@@ -22,7 +22,8 @@ platform :android do
   
   desc "Deploy to production"
   lane :deploy do
-      upload_to_play_store(
+    gradle(task: "clean assembleRelease")  
+    upload_to_play_store(
         package_name: 'com.nathira.startup1', 
         track: 'production', 
         aab: '../build/app/outputs/bundle/release/app-release.aab',
