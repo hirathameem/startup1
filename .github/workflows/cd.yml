@@ -125,7 +125,7 @@ jobs:
         #run: bundle exec fastlane deploy
         uses: maierj/fastlane-action@v1.4.0
         with:
-          lane: internal
+          lane: promote_internal
           subdirectory: android
         
       

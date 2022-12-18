@@ -20,13 +20,14 @@ platform :android do
      end
 
   
-  desc "Submit a new Internal Build to Play Store"
-  lane :internal do
+  desc "Promote Internal to Alpha"
+  lane :promote_internal_to_alpha do
       upload_to_play_store(
         package_name: 'com.nathira.startup1', 
         track: 'internal', 
-        aab: '../build/app/outputs/bundle/release/app-release.aab',
-        json_key: "service_account_key.json"
+        track_promote_to: 'alpha'
+        #aab: '../build/app/outputs/bundle/release/app-release.aab',
+        #json_key: "service_account_key.json"
         )
   end
 end
