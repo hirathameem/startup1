@@ -21,7 +21,7 @@ platform :android do
 
   
   desc "Submit a new Internal Build to Play Store"
-  lane :deploy do
+  lane :internal do
       upload_to_play_store(
         package_name: 'com.nathira.startup1', 
         track: 'internal', 

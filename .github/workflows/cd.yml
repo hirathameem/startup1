@@ -122,9 +122,10 @@ jobs:
       - name: Build the bundle
         run: flutter build appbundle --release
       - name: Run Fastlane
-        run: bundle exec fastlane deploy
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_STARTUP1 }}
-          RELEASE_NOTES: ${{ needs.generate_release.outputs.changelog }}
-
+        #run: bundle exec fastlane deploy
+        uses: maierj/fastlane-action@v1.4.0
+        with:
+          lane: internal
+          subdirectory: android
+        
       
