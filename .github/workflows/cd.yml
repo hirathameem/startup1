@@ -96,7 +96,7 @@ jobs:
           java-version: 11
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-        
+
       - name: Decrypt Android keys
         run: sh ./.github/scripts/decrypt_android_secrets.sh
         env:
@@ -122,7 +122,12 @@ jobs:
       - name: Build the bundle
         run: flutter build appbundle --release
       - name: Run Fastlane
-        uses: maierj/fastlane-action@v1.4.0
+        run: bundle exec fastlane deploy
         with:
-          lane: closed_beta
+          lane: internal
           subdirectory: android
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_STARTUP1 }}
+          RELEASE_NOTES: ${{ needs.generate_release.outputs.changelog }}
+
+      

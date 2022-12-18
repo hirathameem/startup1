@@ -1,74 +1,32 @@
 default_platform(:android)
 
 platform :android do
-  desc "Deploy to production"
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Submit new beta build for testing"
+  lane :beta do
+     sh "flutter build apk -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']}"
+        firebase_app_distribution(
+          app: "1:598133513450:android:9712712105eab7478e0b93",
+          testers: "hirathameem@ymail.com",
+          release_notes: "Lots of amazing new features to test out!" ,
+          firebase_cli_token: ENV['FIREBASE_TOKEN_STARTUP1'],
+          android_artifact_type: "APK",
+          android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk'
+        )
+     end
+
+  
+  desc "Submit a new Internal Build to Play Store"
   lane :deploy do
-    begin
-      gradle(task: "clean")
-      gradle(
-        task: "bundle",
-        build_type: 'Release'
-      )
       upload_to_play_store(
-        package_name: 'com.nathira.startup1'
-        track: 'production',
+        package_name: 'com.nathira.startup1', 
+        track: 'internal', 
         aab: '../build/app/outputs/bundle/release/app-release.aab',
-        skip_upload_metadata: true,
-        skip_upload_images: true,
-        skip_upload_screenshots: true,
-        release_status: "draft",
         json_key: "service_account_key.json"
-        #version_code: flutter_version()["version_code"],
-      )
-    end
+        )
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-# platform :android do
-#   desc "Runs all the tests"
-#   lane :test do
-#     gradle(task: "test")
-#   end
-#
-#   desc "Submit new beta build for testing"
-#   lane :beta do
-#      sh "flutter build apk -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']}"
-#         firebase_app_distribution(
-#           app: "1:598133513450:android:9712712105eab7478e0b93",
-#           testers: "hirathameem@ymail.com",
-#           release_notes: "Lots of amazing new features to test out!" ,
-#           firebase_cli_token: ENV['FIREBASE_TOKEN_STARTUP1'],
-#           android_artifact_type: "APK",
-#           android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk'
-#         )
-#      end
-#
-#   desc "Deploy alpha version to Google Play"
-#   lane :deploy do
-#      sh "flutter build appbundle
-#        upload_to_play_store(
-#           package_name: 'com.nathira.startup1',
-#           track: 'production',
-#           aab: '../build/app/outputs/bundle/release/app-release.aab',
-#           json_key: "api-play-store-key.json"
-#          )
-#
-#
-#       end
-#   end
-#
-#
-#
-#
-#
-#
