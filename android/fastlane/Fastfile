@@ -6,35 +6,60 @@ platform :android do
     gradle(task: "test")
   end
 
-  desc "Submit new beta build for testing"
-  lane :beta do
-     sh "flutter build apk -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']}"
-        firebase_app_distribution(
-          app: "1:598133513450:android:9712712105eab7478e0b93",
-          testers: "hirathameem@ymail.com",
-          release_notes: "Lots of amazing new features to test out!" ,
-          firebase_cli_token: ENV['FIREBASE_TOKEN_STARTUP1'],
-          android_artifact_type: "APK",
-          android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk'
-        )
-     end
-
-  desc "Deploy alpha version to Google Play"
-  lane :deploy do
-     sh "flutter build appbundle -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']}"
-       upload_to_play_store(
-          package_name: 'com.nathira.startup1',
-          json_key: "api-play-store-key.json",
-          aab: '../build/app/outputs/bundle/release/app-release.aab',
-          track: 'production',
-          release_status: 'draft'
-       )
+  # desc "Submit new beta build for testing"
+  # lane :beta do
+  #    sh "flutter build apk -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']}"
+  #       firebase_app_distribution(
+  #         app: "1:598133513450:android:9712712105eab7478e0b93",
+  #         testers: "hirathameem@ymail.com",
+  #         release_notes: "Lots of amazing new features to test out!" ,
+  #         firebase_cli_token: ENV['FIREBASE_TOKEN_STARTUP1'],
+  #         android_artifact_type: "APK",
+  #         android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk'
+  #       )
+  #    end
+     
+  #Internal Script
+  desc "Submit a new Internal Build to Play Store"
+  lane :internal do 
+    upload_to_play_store(
+      track: 'internal',package_name: 'com.nathira.startup1', 
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      json_key: "service_account_key.json"
+    )
     end
 
+  #Deploy to Alpha lane
+  desc "Submit to Alpha lane in Play Store"
+  lane :alpha do 
+    upload_to_play_store(
+      track: 'alpha',
+      package_name: 'com.nathira.startup1', 
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      json_key: "service_account_key.json"
+    )
+    end
+
+  #Deploy to Beta lane
+  desc "Submit to Beta lane in Play Store"
+  lane :beta do 
+    upload_to_play_store(
+      track: 'beta',
+      package_name: 'com.nathira.startup1', 
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      json_key: "service_account_key.json"
+    )
+    end
+
+#Production script
+
+  desc "Deploy to production"
+  lane :playstore do  
+     upload_to_play_store(
+         package_name: 'com.nathira.startup1', 
+         track: 'production', 
+         aab: '../build/app/outputs/bundle/release/app-release.aab',
+         json_key: "service_account_key.json"
+         )
+   end
 end
-
-
-
-
-
-
