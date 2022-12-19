@@ -55,11 +55,8 @@ platform :android do
 
   desc "Deploy to production"
   lane :playstore do
-    # begin
-    #   gradle(
-    #     task: "clean"
-    #   )  
-     upload_to_play_store(
+    sh "flutter build apk -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']}"
+      upload_to_play_store(
          package_name: 'com.nathira.startup1', 
          track: 'production', 
          aab: '../build/app/outputs/bundle/release/app-release.aab',
