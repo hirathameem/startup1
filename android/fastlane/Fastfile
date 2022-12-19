@@ -40,7 +40,7 @@ platform :android do
     )
     end
 
-    #Deploy to Beta lane
+  #Deploy to Beta lane
   desc "Submit to Beta lane in Play Store"
   lane :beta do 
     upload_to_play_store(
@@ -51,21 +51,15 @@ platform :android do
     )
     end
 
-
-
-
-  
-
-
 #Production script
 
-  # desc "Deploy to production"
-  # lane :distribute_playstore do  
-  #   upload_to_play_store(
-  #       package_name: 'com.nathira.startup1', 
-  #       track: 'production', 
-  #       aab: '../build/app/outputs/bundle/release/app-release.aab',
-  #       json_key: "service_account_key.json"
-  #       )
-  # end
+  desc "Deploy to production"
+  lane :playstore do  
+     upload_to_play_store(
+         package_name: 'com.nathira.startup1', 
+         track: 'production', 
+         aab: '../build/app/outputs/bundle/release/app-release.aab',
+         json_key: "service_account_key.json"
+         )
+   end
 end
