@@ -40,6 +40,16 @@ platform :android do
     )
     end
 
+    #Deploy to Beta lane
+  desc "Submit to Beta lane in Play Store"
+  lane :beta do 
+    upload_to_play_store(
+      track: 'beta',
+      package_name: 'com.nathira.startup1', 
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      json_key: "service_account_key.json"
+    )
+    end
 
 
 
