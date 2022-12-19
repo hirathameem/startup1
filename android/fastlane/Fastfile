@@ -65,5 +65,6 @@ platform :android do
          aab: '../build/app/outputs/bundle/release/app-release.aab',
          json_key: "service_account_key.json"
       )
+      end
     end
-end
+  end
