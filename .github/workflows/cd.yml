@@ -125,7 +125,7 @@ jobs:
         #run: bundle exec fastlane deploy
         uses: maierj/fastlane-action@v1.4.0
         with:
-          lane: distribute_playstore
+          lane: internal
           subdirectory: android
         # env:
         #   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_STARTUP1 }}

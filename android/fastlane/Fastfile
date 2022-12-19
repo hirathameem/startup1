@@ -18,15 +18,31 @@ platform :android do
           android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk'
         )
      end
-
-  
-  desc "Deploy to production"
-  lane :distribute_playstore do  
+     
+  #Internal Script
+  desc "Submit a new Internal Build to Play Store"
+  lane: internal do 
     upload_to_play_store(
-        package_name: 'com.nathira.startup1', 
-        track: 'production', 
-        aab: '../build/app/outputs/bundle/release/app-release.aab',
-        json_key: "service_account_key.json"
-        )
+      track: 'internal'
+      package_name: 'com.nathira.startup1', 
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      json_key: "service_account_key.json"
+    )
   end
+
+    
+  
+
+
+#Production script
+
+  # desc "Deploy to production"
+  # lane :distribute_playstore do  
+  #   upload_to_play_store(
+  #       package_name: 'com.nathira.startup1', 
+  #       track: 'production', 
+  #       aab: '../build/app/outputs/bundle/release/app-release.aab',
+  #       json_key: "service_account_key.json"
+  #       )
+  # end
 end
