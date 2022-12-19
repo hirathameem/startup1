@@ -56,12 +56,14 @@ platform :android do
   desc "Deploy to production"
   lane :playstore do
     begin
-      gradle(task: "clean")  
+      gradle(
+        task: "clean"
+      )  
      upload_to_play_store(
          package_name: 'com.nathira.startup1', 
          track: 'production', 
          aab: '../build/app/outputs/bundle/release/app-release.aab',
          json_key: "service_account_key.json"
-         )
-   end
+      )
+    end
 end
