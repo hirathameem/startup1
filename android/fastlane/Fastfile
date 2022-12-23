@@ -22,6 +22,7 @@ platform :android do
   #Internal Script
   desc "Submit a new Internal Build to Play Store"
   lane :internal do 
+    sh "flutter build appbundle"
     upload_to_play_store(
       track: 'internal',package_name: 'com.nathira.startup1', 
       aab: '../build/app/outputs/bundle/release/app-release.aab',
