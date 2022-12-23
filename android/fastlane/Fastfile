@@ -22,6 +22,7 @@ platform :android do
   #Internal Script
   desc "Submit a new Internal Build to Play Store"
   lane :internal do 
+    sh "flutter build appbundle"
     upload_to_play_store(
       track: 'internal',package_name: 'com.nathira.startup1', 
       aab: '../build/app/outputs/bundle/release/app-release.aab',
@@ -29,16 +30,16 @@ platform :android do
     )
     end
 
-  #Deploy to Alpha lane
-  desc "Submit to Alpha lane in Play Store"
-  lane :alpha do 
-    upload_to_play_store(
-      track: 'alpha',
-      package_name: 'com.nathira.startup1', 
-      aab: '../build/app/outputs/bundle/release/app-release.aab',
-      json_key: "service_account_key.json"
-    )
-    end
+  # #Deploy to Alpha lane
+  # desc "Submit to Alpha lane in Play Store"
+  # lane :alpha do 
+  #   upload_to_play_store(
+  #     track: 'alpha',
+  #     package_name: 'com.nathira.startup1', 
+  #     aab: '../build/app/outputs/bundle/release/app-release.aab',
+  #     json_key: "service_account_key.json"
+  #   )
+  #   end
 
   #Deploy to Beta lane
   desc "Submit to Beta lane in Play Store"
@@ -54,12 +55,13 @@ platform :android do
 #Production script
 
   desc "Deploy to production"
-  lane :playstore do  
-     upload_to_play_store(
+  lane :playstore do
+    sh "flutter build appbundle --release"
+      upload_to_play_store(
          package_name: 'com.nathira.startup1', 
          track: 'production', 
          aab: '../build/app/outputs/bundle/release/app-release.aab',
          json_key: "service_account_key.json"
-         )
-   end
-end
+      )
+      end
+    end
