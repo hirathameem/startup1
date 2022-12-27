@@ -2,11 +2,11 @@
 name: CD
 
 on:
-  # push:
-  #   branches:
-  #     - Release
-  release:
-     types: [published]
+  push:
+    branches:
+      - Release8
+  # release:
+  #    types: [published]
       
 
 jobs:
@@ -92,7 +92,7 @@ jobs:
           ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
           ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-      - run: bundle exec fastlane playstore
+      - run: bundle exec fastlane internal
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_STARTUP1 }}
           RELEASE_NOTES: ${{ needs.generate_release.outputs.changelog }}
