@@ -18,11 +18,34 @@ platform :android do
   #         android_artifact_path: '../build/app/outputs/flutter-apk/app-release.apk'
   #       )
   #    end
+  
+  
+  #Increase version code
+
+  # lane :increment_version_code do
+  #   version_code = google_play_track_version_codes(
+  #     package_name: "com.nathira.startup1",  #e.g. com.xyz.app
+  #     track: "internal",                #e.g. alpha
+  #     json_key: "service_account_key.json",
+  #    )
      
+  #    version_code_play_store = version_code[0].to_i
+  #    update_version_code = version_code_play_store + 1
+     
+  #    increment_version_code(
+  #     gradle_file_path: "/Users/salimnathira/AndroidStudioProjects/startup1/android/app/build.gradle",
+  #     version_code: update_version_code.to_i
+  #    )
+  # end
+  
+
+
+
   #Internal Script
   desc "Submit a new Internal Build to Play Store"
   lane :internal do 
-    sh "flutter build appbundle"
+    #increment_version_code
+    sh "flutter build appbundle -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']} --release"
     upload_to_play_store(
       track: 'internal',package_name: 'com.nathira.startup1', 
       aab: '../build/app/outputs/bundle/release/app-release.aab',
@@ -56,7 +79,7 @@ platform :android do
 
   desc "Deploy to production"
   lane :playstore do
-    sh "flutter build appbundle --release"
+    sh "flutter build appbundle -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']} --release"
       upload_to_play_store(
          package_name: 'com.nathira.startup1', 
          track: 'production', 

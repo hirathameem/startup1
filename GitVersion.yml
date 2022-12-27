@@ -1,11 +1,14 @@
-assembly-versioning-scheme: None
+assembly-versioning-scheme: MajorMinorPatch
 mode: ContinuousDelivery
+next-version: 3.2.2
 branches:
+  pull-request:
+    tag: pr
   main:
-    regex: ^master$|^main$
     mode: ContinuousDelivery
     tag: ''
     increment: Minor
+    regex: ^master$|^main$
 ignore:
   sha: []
 merge-message-formats: {}
