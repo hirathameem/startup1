@@ -2,12 +2,11 @@
 name: CD
 
 on:
-  push:
-    branches:
-      - Release8
-
-  # release:
-  #   types: [published]
+  # push:
+  #   branches:
+  #     - Release
+  release:
+     types: [published]
       
 
 jobs:
