@@ -56,7 +56,7 @@ jobs:
       #     ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
 
       - name: Generate private_service_account.json file
-        run: echo ${{secrets.PRIVATE_SERVICE_ACCOUNT}} | base64 -d > /home/runner/work/startup1/startup1/android/private_service_account_key.json
+        run: echo ${{secrets.PRIVATE_SERVICE_ACCOUNT_KEY}} | base64 -d > /home/runner/work/startup1/startup1/android/private_service_account_key.json
         env:
           PRIVATE_SERVICE_ACCOUNT: ${{ secrets.PRIVATE_SERVICE_ACCOUNT_KEY }}
 
