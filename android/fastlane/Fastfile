@@ -47,7 +47,7 @@ platform :android do
     upload_to_play_store(
       track: 'internal',package_name: 'com.nathira.startup1', 
       aab: '../build/app/outputs/bundle/release/app-release.aab',
-      json_key: "/Users/salimnathira/google-service-account.json"
+      json_key: "private_service_account_key.json"
     )
     end
 

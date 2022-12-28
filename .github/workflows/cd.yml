@@ -54,6 +54,12 @@ jobs:
       #   run: sh ./.github/scripts/decrypt_android_secrets.sh
       #   env:
       #     ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
+
+      - name: Generate google-service-account.json file
+        run: echo ${{secrets.PRIVATE_SERVICE_ACCOUNT}} | base64 -d > /home/runner/work/startup1/startup1/google-service-account-key.json
+        env:
+          PRIVATE_SERVICE_ACCOUNT: ${{ secrets.PRIVATE_SERVICE_ACCOUNT }}
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2.3.0
         with:
