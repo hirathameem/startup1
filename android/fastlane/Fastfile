@@ -19,37 +19,54 @@ platform :android do
         )
      end
   
-  
-  #Increase version code
+  #Trial and Error
+  desc “Deploy to closed beta track”
+  lane :internal do
+    sh "flutter build appbundle"
+    begin
+      gradle(task: “clean”)
+      g = google_play_track_version_codes
+      gb = google_play_track_version_codes(track: ‘internal’)
+      ga = google_play_track_version_codes(track: ‘production’)
+      max_value = [g[0].to_i, gb[0].to_i, ga[0].to_i].max
+      puts “this is the version number”
+      puts max_value
+      version_updated = max_value + 1
+      puts “this is the incremented version number”
+      puts version_updated
+      increment_version_code(gradle_file_path: “./app/build.gradle”, version_code: version_updated.to_i)
+    gradle(
+      task: “bundle”,
+      build_type: ‘Release’
+     )
+  upload_to_play_store(
+    track: ‘internal’,
+    aab: ‘../build/app/outputs/bundle/release/app-release.aab’,
+    skip_upload_metadata: true,
+    skip_upload_images: true,
+    skip_upload_screenshots: true,
+    release_status: “draft”,
+     )
+  end
 
-  # lane :increment_version_code do
-  #   version_code = google_play_track_version_codes(
-  #     package_name: "com.nathira.startup1",  #e.g. com.xyz.app
-  #     track: "internal",                #e.g. alpha
-  #     json_key: "service_account_key.json",
-  #    )
-     
-  #    version_code_play_store = version_code[0].to_i
-  #    update_version_code = version_code_play_store + 1
-     
-  #    increment_version_code(
-  #     gradle_file_path: "/Users/salimnathira/AndroidStudioProjects/startup1/android/app/build.gradle",
-  #     version_code: update_version_code.to_i
-  #    )
-  # end
+
+
+
+
+
   
 
-  #Internal Script
-  desc "Submit a new Internal Build to Play Store"
-  lane :internal do 
+  # #Internal Script
+  # desc "Submit a new Internal Build to Play Store"
+  # lane :internal do 
     
-    sh "flutter build appbundle -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']} --release"
-    upload_to_play_store(
-      track: 'internal',package_name: 'com.nathira.startup1', 
-      aab: '../build/app/outputs/bundle/release/app-release.aab',
-      json_key: "private_service_account_key.json"
-    )
-    end
+  #   sh "flutter build appbundle -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']} --release"
+  #   upload_to_play_store(
+  #     track: 'internal',package_name: 'com.nathira.startup1', 
+  #     aab: '../build/app/outputs/bundle/release/app-release.aab',
+  #     json_key: "private_service_account_key.json"
+  #   )
+  #   end
 
   # #Deploy to Alpha lane
   # desc "Submit to Alpha lane in Play Store"
