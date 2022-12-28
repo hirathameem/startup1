@@ -1,8 +1,12 @@
 name: Publish to firebase app distribution
 on:
-  push:
+   push:
+  #   paths:
+  #     - "app/**"
+  #     - "onloop_design_system/**"
+  #   # branches to consider in the event; optional, defaults to all
     branches:
-      - Release  
+      - Release
 
 jobs:
   generate_release:
