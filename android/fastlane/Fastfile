@@ -23,30 +23,30 @@ platform :android do
   desc “Deploy to closed beta track”
   lane :internal do
     sh "flutter build appbundle"
-    begin
-      gradle(task: “clean”)
-      g = google_play_track_version_codes
-      gb = google_play_track_version_codes(track: ‘internal’)
-      ga = google_play_track_version_codes(track: ‘production’)
-      max_value = [g[0].to_i, gb[0].to_i, ga[0].to_i].max
-      puts “this is the version number”
-      puts max_value
-      version_updated = max_value + 1
-      puts “this is the incremented version number”
-      puts version_updated
-      increment_version_code(gradle_file_path: “./app/build.gradle”, version_code: version_updated.to_i)
-    gradle(
-      task: “bundle”,
-      build_type: ‘Release’
-     )
-  upload_to_play_store(
-    track: ‘internal’,
-    aab: ‘../build/app/outputs/bundle/release/app-release.aab’,
-    skip_upload_metadata: true,
-    skip_upload_images: true,
-    skip_upload_screenshots: true,
-    release_status: “draft”,
-     )
+     begin
+        gradle(task: “clean”)
+        g = google_play_track_version_codes
+        gb = google_play_track_version_codes(track: ‘internal’)
+        ga = google_play_track_version_codes(track: ‘production’)
+        max_value = [g[0].to_i, gb[0].to_i, ga[0].to_i].max
+        puts “this is the version number”
+        puts max_value
+        version_updated = max_value + 1
+        puts “this is the incremented version number”
+        puts version_updated
+        increment_version_code(gradle_file_path: “./app/build.gradle”, version_code: version_updated.to_i)
+      gradle(
+        task: “bundle”,
+        build_type: ‘Release’
+       )
+    upload_to_play_store(
+      track: ‘internal’,
+      aab: ‘../build/app/outputs/bundle/release/app-release.aab’,
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      release_status: “draft”,
+      )
   end
 
 
@@ -102,4 +102,4 @@ platform :android do
          json_key: "private_service_account_key.json"
       )
       end
-    end
+  end
