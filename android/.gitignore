@@ -11,4 +11,6 @@ GeneratedPluginRegistrant.java
 app/key.properties
 **/*.keystore
 **/*.jks
+private_service_account_key.json
+
 

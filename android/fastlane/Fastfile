@@ -82,7 +82,7 @@ platform :android do
          package_name: 'com.nathira.startup1', 
          track: 'production', 
          aab: '../build/app/outputs/bundle/release/app-release.aab',
-         json_key: "service-account-key.json"
+         json_key: "private_service_account_key.json"
       )
       end
     end
