@@ -76,8 +76,14 @@ jobs:
         with:
           versionSpec: "5.10.0"
       - name: Determine Version
-        id: gitversion
+        id: gitversion #step id used as reference for output values
         uses: gittools/actions/gitversion/execute@v0.9.13
+      - name: Display GitVersion outputs
+        run: |
+          echo "MajorMinorPatch: ${{ steps.gitversion.outputs.majorMinorPatch }}"
+          echo "NugetVersionV2: ${{ steps.gitversion.ouputs.nuGetVersionV2 }}"
+          echo "CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}"
+
         
       # - name: Build the bundle                                                                                                    
       #   run: flutter build appbundle --release
