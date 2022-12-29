@@ -89,7 +89,7 @@ jobs:
       - name: Update version code
         uses: chkfung/android-version-actions@v1.2.1
         with:
-          gradlePath: android/app/build.gradle
+          gradlePath: app/build.gradle
           versionCode: ${{ env.version_code }}
 
 
