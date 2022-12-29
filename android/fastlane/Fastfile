@@ -47,7 +47,7 @@ platform :android do
       skip_upload_screenshots: true,
       release_status: “draft”,
       )
-  end
+    end
 
 
 
