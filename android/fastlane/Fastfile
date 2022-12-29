@@ -46,7 +46,7 @@ platform :android do
     sh "flutter build appbundle"
     upload_to_play_store(
       track: 'internal',package_name: 'com.nathira.startup1', 
-      version_code: flutter_version()["version_code"]
+      version_code: flutter_version()["version_code"],
       aab: '../build/app/outputs/bundle/release/app-release.aab',
       skip_upload_screenshots: true,
       skip_upload_images: true,
