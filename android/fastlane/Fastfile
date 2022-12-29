@@ -50,7 +50,18 @@ platform :android do
     end
 
 
+    Production script
 
+  desc "Deploy to production"
+  lane :playstore do
+    sh "flutter build appbundle -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']} --release"
+      upload_to_play_store(
+          package_name: 'com.nathira.startup1', 
+          track: 'production', 
+          aab: '../build/app/outputs/bundle/release/app-release.aab',
+          json_key: "private_service_account_key.json"
+        )   
+      end
 
 
 
@@ -90,16 +101,5 @@ platform :android do
   #   )
   #   end
 
-#Production script
-
-  desc "Deploy to production"
-  lane :playstore do
-    sh "flutter build appbundle -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']} --release"
-      upload_to_play_store(
-         package_name: 'com.nathira.startup1', 
-         track: 'production', 
-         aab: '../build/app/outputs/bundle/release/app-release.aab',
-         json_key: "private_service_account_key.json"
-      )
-      end
-    end
+#
+end
