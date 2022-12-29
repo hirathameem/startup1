@@ -6,7 +6,7 @@ on:
   #     - "onloop_design_system/**"
   #   # branches to consider in the event; optional, defaults to all
     branches:
-      - Release
+      - Release10
 
 jobs:
   generate_release:
