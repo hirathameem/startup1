@@ -86,19 +86,19 @@ jobs:
         
       #Update version code
 
-      - name: Define version code with offset
-        env:
-          RUN_NUMBER: ${{ github.run_number }}
-          INITIAL_VERSION_CODE: 227
-        run: |
-            VERSION_CODE=$((INITIAL_VERSION_CODE + RUN_NUMBER))
-            echo "version_code=$VERSION_CODE" >> $GITHUB_ENV
+      # - name: Define version code with offset
+      #   env:
+      #     RUN_NUMBER: ${{ github.run_number }}
+      #     INITIAL_VERSION_CODE: 227
+      #   run: |
+      #       VERSION_CODE=$((INITIAL_VERSION_CODE + RUN_NUMBER))
+      #       echo "version_code=$VERSION_CODE" >> $GITHUB_ENV
 
-      - name: Update version code
-        uses: chkfung/android-version_actions@v1.1
-        with:
-          gradlePath: android/app/build.gradle
-          versionCode: ${{ env.version_code }}
+      # - name: Update version code
+      #   uses: chkfung/android-version_actions@v1.1
+      #   with:
+      #     gradlePath: android/app/build.gradle
+      #     versionCode: ${{ env.version_code }}
 
         
       # - name: Build the bundle                                                                                                    
