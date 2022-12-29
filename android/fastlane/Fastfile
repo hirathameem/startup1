@@ -102,4 +102,4 @@ platform :android do
          json_key: "private_service_account_key.json"
       )
       end
-    end
+  end
