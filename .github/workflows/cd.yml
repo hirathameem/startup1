@@ -78,28 +78,22 @@ jobs:
         id: gitversion #step id used as reference for output values
         uses: gittools/actions/gitversion/execute@v0.9.13
 
-      - name: Display GitVersion outputs
+      - name: Define verison code with offset
+        env:
+          RUN_NUMBER: ${{github.run_number }}
+          INITIAL_VERSION_CODE: 227
         run: |
-        echo "MajorMinorPatch: ${{ steps.gitversion.outputs.majorMinorPatch }}"
-        echo "NuGetVersionV2: ${{ steps.gitversion.ouputs.nuGetVersionV2 }}"
-        echo "CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}"
-        
-      #Update version code
+          VERSION_CODE=$((INITIAL_VERSION_CODE + RUN_NUMBER))
+          echo "version_code=$VERSION_CODE" >> $GITHUB_ENV
 
-      # - name: Define version code with offset
-      #   env:
-      #     RUN_NUMBER: ${{ github.run_number }}
-      #     INITIAL_VERSION_CODE: 227
-      #   run: |
-      #       VERSION_CODE=$((INITIAL_VERSION_CODE + RUN_NUMBER))
-      #       echo "version_code=$VERSION_CODE" >> $GITHUB_ENV
+      - name: Update version code
+        uses: chkfung/android-version-action@v1.1
+        with:
+          gradlePath: android/app/build.gradle
+          versionCode: ${{ env.version_code }}
 
-      # - name: Update version code
-      #   uses: chkfung/android-version_actions@v1.1
-      #   with:
-      #     gradlePath: android/app/build.gradle
-      #     versionCode: ${{ env.version_code }}
 
+       
         
       # - name: Build the bundle                                                                                                    
       #   run: flutter build appbundle --release
