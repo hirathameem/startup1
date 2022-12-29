@@ -20,17 +20,17 @@ platform :android do
      end
   
 
-  # #Internal Script
-  # desc "Submit a new Internal Build to Play Store"
-  # lane :internal do 
+  #Internal Script
+  desc "Submit a new Internal Build to Play Store"
+  lane :internal do 
     
-  #   sh "flutter build appbundle -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']} --release"
-  #   upload_to_play_store(
-  #     track: 'internal',package_name: 'com.nathira.startup1', 
-  #     aab: '../build/app/outputs/bundle/release/app-release.aab',
-  #     json_key: "private_service_account_key.json"
-  #   )
-  #   end
+    sh "flutter build appbundle -v --build-number #{ENV['GITVERSION_BUILDMETADATA']} --build-name #{ENV['GITVERSION_MAJORMINORPATCH']} --release"
+    upload_to_play_store(
+      track: 'internal',package_name: 'com.nathira.startup1', 
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      json_key: "private_service_account_key.json"
+    )
+    end
 
   # #Deploy to Alpha lane
   # desc "Submit to Alpha lane in Play Store"
