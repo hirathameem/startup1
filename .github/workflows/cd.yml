@@ -37,7 +37,11 @@ jobs:
     defaults:
       run:
         working-directory: ./android
+    outputs:
+      Version: ${{ steps.gitversion.outputs.nuGetVersionV2 }}
+      CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}
     steps:
+    # checkout the repo
       - name: Checkout code
         uses: actions/checkout@v2
         with:
@@ -49,11 +53,6 @@ jobs:
           java-version: 11
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-
-      # - name: Decrypt Android keys
-      #   run: sh ./.github/scripts/decrypt_android_secrets.sh
-      #   env:
-      #     ANDROID_KEYS_SECRET_PASSPHRASE: ${{ secrets.ANDROID_KEYS_SECRET_PASSPHRASE }}
 
       - name: Generate private_service_account.json file
         run: echo ${{secrets.PRIVATE_SERVICE_ACCOUNT_KEY}} | base64 -d > /home/runner/work/startup1/startup1/android/private_service_account_key.json
@@ -78,11 +77,28 @@ jobs:
       - name: Determine Version
         id: gitversion #step id used as reference for output values
         uses: gittools/actions/gitversion/execute@v0.9.13
+
       - name: Display GitVersion outputs
         run: |
-          echo "MajorMinorPatch: ${{ steps.gitversion.outputs.majorMinorPatch }}"
-          echo "NugetVersionV2: ${{ steps.gitversion.ouputs.nuGetVersionV2 }}"
-          echo "CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}"
+        echo "MajorMinorPatch: ${{ steps.gitversion.outputs.majorMinorPatch }}"
+        echo "NuGetVersionV2: ${{ steps.gitversion.ouputs.nuGetVersionV2 }}"
+        echo "CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}"
+        
+      #Update version code
+
+      - name: Define version code with offset
+        env:
+          RUN_NUMBER: ${{ github.run_number }}
+          INITIAL_VERSION_CODE: 227
+        run: |
+            VERSION_CODE=$((INITIAL_VERSION_CODE + RUN_NUMBER))
+            echo "version_code=$VERSION_CODE" >> $GITHUB_ENV
+
+      - name: Update version code
+        uses: chkfung/android-version_actions@v1.1
+        with:
+          gradlePath: android/app/build.gradle
+          versionCode: ${{ env.version_code }}
 
         
       # - name: Build the bundle                                                                                                    
