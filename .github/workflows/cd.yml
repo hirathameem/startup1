@@ -78,30 +78,15 @@ jobs:
         id: gitversion #step id used as reference for output values
         uses: gittools/actions/gitversion/execute@v0.9.13
 
-      - name: Define verison code with offset
-        env:
-          RUN_NUMBER: ${{github.run_number }}
-          INITIAL_VERSION_CODE: 227
-        run: |
-          VERSION_CODE=$((INITIAL_VERSION_CODE + RUN_NUMBER))
-          echo "version_code=$VERSION_CODE" >> $GITHUB_ENV
-
-      - name: Update version code
-        uses: chkfung/android-version-actions@v1.2.1
+      - name: Bump version code
+        uses: chkfung/android-version-actions@v1.1
         with:
-          gradlePath: app/build.gradle
-          versionCode: ${{ env.version_code }}
+            gradlePath: app/build.gradle
+            versionCode: ${{github.run_number}}
 
-
+     
        
-        
-      # - name: Build the bundle                                                                                                    
-      #   run: flutter build appbundle --release
-      # - name: Upload artifact to Github
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: release-aab
-      #     path: build/app/outputs//bundle/release/app-release.aab
+      
       - run: bundle install
       - name: Configure Keystore
         run: |
